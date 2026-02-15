@@ -68,6 +68,9 @@ window.addEventListener("DOMContentLoaded", () => {
   const bombSound = new Audio("assets/bomb.mp3");
   const bgMusic = new Audio("assets/bgmusic.mp3");
 
+  const winSound = new Audio("assets/win.mp3");
+  winSound.volume = 0.8;
+
   bgMusic.loop = true;
   bgMusic.volume = 0.4;
 
@@ -229,8 +232,13 @@ window.addEventListener("DOMContentLoaded", () => {
             sliceSound.play();
 
             if (checkWin()) {
+
               bgMusic.pause();
-              gameState = "levelComplete";
+
+              winSound.currentTime = 0;
+              winSound.play();
+
+              gameState = "levelComplete";;
             }
           }
 
